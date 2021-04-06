@@ -9,16 +9,13 @@ public class Simpsons_method {
     DrawChart draw = new DrawChart();
     Outputs out = new Outputs();
 
-    private long getN(double a, double b, double e, int nf){
-        return Math.round(Math.sqrt(fun.IfMax(a,b,nf)*Math.pow((b-a),3)/12/e));
-    }
     public void startMethod(double down, double up, double e,int nf){
         double a,answer,r,I,step,x0,xn,sum_1,sum_2;
-        int iteration = 0;
-        long n = getN(down,up,e,nf);
+        long n = 2;
         a = down; answer = 0; r = e + 1; I = fun.getI(down,up,nf);
 
         while(r > e) {
+            n*=2;
             step = (up-down)/n;
             x0 = fun.f(down,nf);
             a += step;
@@ -34,13 +31,10 @@ public class Simpsons_method {
             }
             answer = step * (x0 + xn + 2 * sum_2 + 4 * sum_1) / 3;
             r = Math.abs(I-answer);
-            n=n*2;
             a = down;
-            iteration++;
         }
 
-        n=n/2;
-        out.outSim(e,answer,I,r,n,iteration);
+        out.outAnswer(e,answer,I,r,n);
         draw.draw(down,up,nf);
     }
 }

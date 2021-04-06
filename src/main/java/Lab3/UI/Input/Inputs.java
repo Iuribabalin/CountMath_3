@@ -31,12 +31,31 @@ public class Inputs {
         while (true) {
             System.out.print("""
                     Выбирите метод:
-                    1. Метод трапеций (n = 10)
+                    1. Метод трапеций
                     2. Метод Симсона
+                    3. Метод Прямоугольников
                     номер метода:\s""");
             try {
                 int num_method = Integer.parseInt(in.next().trim());
-                if(num_method == 1 || num_method == 2)
+                if(num_method == 1 || num_method == 2 || num_method == 3)
+                    return num_method;
+            } catch (NumberFormatException ignored) {
+            }
+        }
+    }
+
+    public int InputMethod_of_rectangles(){
+        while (true) {
+            System.out.print("""
+                    Выбирите метод:
+                    1. Правых прямоугольников
+                    2. Левых прямоугольников
+                    3. Средних прямоугольников
+                    4. Все методы 
+                    номер метода:\s""");
+            try {
+                int num_method = Integer.parseInt(in.next().trim());
+                if(num_method == 1 || num_method == 2 || num_method == 3 || num_method == 4)
                     return num_method;
             } catch (NumberFormatException ignored) {
             }
